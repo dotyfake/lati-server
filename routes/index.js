@@ -4,7 +4,7 @@
 
 
 function route (app){
-    app.use(cors())
+    app.use(cors({origin: '*', methods: ['GET', 'POST', 'PUT', 'DELETE']}))
 
     app.use('/api/auth', authRouter)
     
