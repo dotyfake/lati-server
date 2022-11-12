@@ -17,12 +17,6 @@ app.use(morgan('combined'));
 
 db.connect()
 
-const io = new Server(server, {
-    cors: {
-        origin: "http://localhost:3001/",
-        methods: ["GET", "POST"]
-    }
-})
 
 app.use(
     express.urlencoded({
@@ -32,16 +26,7 @@ app.use(
 );
 app.use(express.json({limit: '3mb'}));
 
-
 route(app);
-
-io.on("connection", (socket) => {
-    console.log(`Connected: ${socket.id}`);
-    socket.on("disconnect", ()=> {
-        console.log(`Disconnected: ${socket.id}`);
-    })
-})
-
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`)

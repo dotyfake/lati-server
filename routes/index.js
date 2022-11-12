@@ -9,8 +9,8 @@
 
 
 function route (app){
-    app.use(cors({origin: 'http://localhost:3001/', methods: ['GET', 'POST', 'PUT' , 'PATCH', 'DELETE']}))
-    app.use(cors({origin: 'https://lati.netlify.app/', methods: ['GET', 'POST', 'PUT' , 'PATCH', 'DELETE']}))
+    app.use(cors({origin: '*', methods: ['GET', 'POST', 'PUT' , 'PATCH', 'DELETE']}))
+    // app.use(cors({origin: '', methods: ['GET', 'POST', 'PUT' , 'PATCH', 'DELETE']}))
 
     app.use('/api/auth', authRouter)
     
