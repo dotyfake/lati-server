@@ -87,7 +87,6 @@ class PostsController {
                 { new: true },
                 );
 
-                    console.log(post.like, isLiked);
             res.json({like: post.like, postId: post._id});
         } catch (err) {
             console.log(err);
@@ -97,7 +96,6 @@ class PostsController {
     async createComment(req, res, next) {
         const { postId, content } = req.body;
         const userId = req.userId;
-        console.log(req.userId);
 
         const user = await User.findOne({_id: userId})
         const data = {

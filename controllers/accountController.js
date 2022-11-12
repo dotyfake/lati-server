@@ -50,7 +50,6 @@ class AccountController {
     async updateUser(req, res, next) {
         const userId = req.userId;
         const value = parseInt(req.body.value);
-        console.log(req.body.value, value);
         if (req.body.name === 'age' && !Number.isInteger(value))
             return res.status(500).json({ success: false, message: 'Age must be a number!' });
 
@@ -59,7 +58,6 @@ class AccountController {
         };
         try {
             let user = await User.findById(userId);
-            console.log(user);
             user = await User.findByIdAndUpdate(userId, data, { new: true });
             res.json({ [req.body.name]: req.body.value });
         } catch (err) {
