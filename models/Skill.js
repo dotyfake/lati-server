@@ -13,6 +13,10 @@ const Schema = mongoose.Schema;
     type: Schema.Types.ObjectId,
     ref: 'users',
   },
+  games: {
+    type: Schema.Types.ObjectId,
+    ref: 'games',
+  },
   isActive: {type: Boolean},
   isBusy: {type: Boolean},
   audioUrl: { type: String},

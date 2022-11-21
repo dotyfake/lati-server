@@ -13,6 +13,22 @@ class UserController {
         }
     }
 
+    async getAllUsers(req, res, next) {
+        const {page, limit} = req.query
+        try {
+            const limitValue = limit ? +limit : 10
+            const pageNumber = page ? +page : 1
+            const skipAmount = pageNumber === 1 ? 0 : (pageNumber * limitValue) - 10;
+            
+            const users = await User.find({}).limit(limitValue).skip(skipAmount).select('-password');
+            const countUsers = await User.countDocuments({})
+            res.status(200).json({ users, countUsers});
+        } catch (error) {
+            console.log(error);
+            res.status(400).json({ message: error });
+        }
+    }
+
 }
 
 module.exports = new UserController();

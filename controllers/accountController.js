@@ -96,10 +96,23 @@ class AccountController {
             );
             const userFollower = await User.findByIdAndUpdate(
                 followingUserId,
-                { [queryFilter]: { follower: userId} },
+                { [queryFilter]: { follower: userId } },
                 { new: true, upsert: true },
             );
-            res.json({ following: userFollowing.following  });
+            res.json({ following: userFollowing.following });
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    async updateStatus(req, res, next) {
+        const userId = req.userId;
+        const { status } = req.body;
+        console.log(status);
+        try {
+            // const user = await User.findByIdAndUpdate(userId, { status: status }, { new: true });
+
+            res.json({status: status});
         } catch (err) {
             console.log(err);
         }

@@ -33,7 +33,6 @@ class AuthController {
             // Return token
             const accessToken = jwt.sign({ userId: newUser._id }, process.env.ACCESS_TOKEN_SECRET);
             res.json({
-                success: true,
                 message: 'User created successfully',
                 id: newUser._id,
                 username: newUser.username,
@@ -75,7 +74,6 @@ class AuthController {
             const accessToken = jwt.sign({ userId: user._id }, process.env.ACCESS_TOKEN_SECRET);
 
             res.json({
-                success: true,
                 message: 'User logged in successfully!',
                 id: user._id,
                 username: user.username,

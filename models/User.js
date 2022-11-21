@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const {Skill} = require('./Skill')
-const {Post} = require('./Post')
+const { Skill } = require('./Skill');
+const { Post } = require('./Post');
 
 const Avatar = new Schema({
     avatarUrl: { type: String },
@@ -37,14 +37,13 @@ const User = new Schema(
         bio: { type: String, default: 'Hôm nay vừa mưa lại vừa lạnh, không bằng ở nhà chơi game với mình nha ^_____^' },
         age: { type: Number, default: 18 },
         photos: { type: [Photo] },
-        coin: {type: Number, default : 8888},
-        gender: {type: String},
-        skills: {type: [Skill]},
-        following: {type: [Schema.Types.ObjectId],
-            ref: 'users',  default : []},
-        follower: {type:[Schema.Types.ObjectId],
-            ref: 'users',  default : []},
-        posts: {type: [Post],  default : []},
+        coin: { type: Number, default: 8888 },
+        gender: { type: String },
+        skills: { type: [Skill] },
+        following: { type: [Schema.Types.ObjectId], ref: 'users', default: [] },
+        follower: { type: [Schema.Types.ObjectId], ref: 'users', default: [] },
+        posts: { type: [Post], default: [] },
+        status: { type: String },
     },
     {
         timestamps: true,

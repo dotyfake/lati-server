@@ -11,6 +11,8 @@ router.delete('/deletePhoto', verifyToken,  AccountController.deletePhoto)
 
 router.patch('/updateUser', verifyToken,  AccountController.updateUser)
 
+router.patch('/updateStatus', verifyToken,  AccountController.updateStatus)
+
 router.patch('/updateFollowingUser', verifyToken,  AccountController.updateFollowingUser)
 
 module.exports = router
