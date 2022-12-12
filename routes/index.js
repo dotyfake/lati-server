@@ -11,7 +11,6 @@
 
 function route (app){
     app.use(cors({origin: '*', methods: ['GET', 'POST', 'PUT' , 'PATCH', 'DELETE']}))
-    // app.use(cors({origin: '', methods: ['GET', 'POST', 'PUT' , 'PATCH', 'DELETE']}))
 
     app.use('/api/auth', authRouter)
     
