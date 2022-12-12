@@ -13,6 +13,8 @@ router.patch('/updateUser', verifyToken,  AccountController.updateUser)
 
 router.patch('/updateStatus', verifyToken,  AccountController.updateStatus)
 
+router.get('/getFollowingUser', verifyToken,  AccountController.getFollowingUser)
+
 router.patch('/updateFollowingUser', verifyToken,  AccountController.updateFollowingUser)
 
 module.exports = router

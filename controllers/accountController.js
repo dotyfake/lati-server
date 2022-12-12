@@ -83,6 +83,17 @@ class AccountController {
         }
     }
 
+    async getFollowingUser(req, res, next) {
+        const userId = req.userId;
+
+        try {
+            const user = await User.findOne({_id: userId}).populate('following', 'displayName avatar.avatarUrl').select('following')
+            res.json(user);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     async updateFollowingUser(req, res, next) {
         const { action, followingUserId } = req.query;
         const userId = req.userId;
@@ -120,3 +131,4 @@ class AccountController {
 }
 
 module.exports = new AccountController();
+    

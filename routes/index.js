@@ -5,6 +5,7 @@
  const userRouter = require('./user')
  const searchRouter = require('./search')
  const postsRouter = require('./posts')
+ const chatRouter = require('./chat')
  const cors = require('cors')
 
 
@@ -25,6 +26,8 @@ function route (app){
     app.use('/api/search', searchRouter)
 
     app.use('/api/posts', postsRouter)
+
+    app.use('/api/chat', chatRouter)
 } 
 
 module.exports = route

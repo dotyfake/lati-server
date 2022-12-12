@@ -3,6 +3,7 @@ const Skill = require('../models/Skill');
 
 class AccountController {
     async getSkills(req, res, next) {
+        
         const {slug, page, limit} = req.query
         try {
             const limitValue = limit ? +limit : 10

@@ -3,7 +3,7 @@ const User = require('../models/User');
 class SearchController {
     async searchUser(req, res, next) {
     const {payload} = req.query
-    const regex = new RegExp(`${payload}`, 'ui')
+    const regex = new RegExp(`${payload}`, 'i')
         try {
             let user = await User.find({
                 $or:[ {displayName:regex}, {username:regex}]

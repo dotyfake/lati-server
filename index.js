@@ -5,12 +5,17 @@ const http = require('http')
 const { urlencoded } = require('express');
 const db = require('./config/db');
 const route = require('./routes')
+const socketIo = require('./socket/socket')
 const {Server} = require('socket.io')
 
 const app = express();
 const port = process.env.PORT || 3000;
 const server = http.createServer(app)
-
+const io = require("socket.io")(8800, {
+    cors: {
+      origin: "*",
+    },
+  });
 app.use(morgan('combined'));
 
 // app.use(express.static(path.join(__dirname, 'public')))
@@ -27,6 +32,8 @@ app.use(
 app.use(express.json({limit: '3mb'}));
 
 route(app);
+
+socketIo(io);
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`)
