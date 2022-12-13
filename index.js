@@ -21,9 +21,6 @@ const io = require("socket.io")(8800, {
 
 app.use(morgan('combined'));
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});
 // app.use(express.static(path.join(__dirname, 'public')))
 
 
