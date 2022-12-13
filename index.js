@@ -12,16 +12,18 @@ const app = express();
 const port = process.env.PORT || 3000;
 const server = http.createServer(app)
 
-const io = require("socket.io")(server, {
+const io = require("socket.io")(8800, {
     cors: {
       origin: "*",
     },
+    transports: ['websocket']
   });
-  io.set('transports', ['websocket']);
-
 
 app.use(morgan('combined'));
 
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
 // app.use(express.static(path.join(__dirname, 'public')))
 
 
