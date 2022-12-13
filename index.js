@@ -12,12 +12,22 @@ const app = express();
 const port = process.env.PORT || 3000;
 const server = http.createServer(app)
 
-const io = require("socket.io")(8800, {
-    cors: {
-      origin: "*",
-    },
-    transports: ['websocket']
-  });
+// const io = require("socket.io")(8800, {
+//     cors: {
+//       origin: "*",
+//     },
+//     transports: ['websocket']
+//   });
+
+const io = new Server({
+  path: "/lati-socket/",
+  cors: {
+          origin: "*",
+        },
+  transports: ['websocket']
+});
+
+io.listen(8800)
 
 app.use(morgan('combined'));
 
