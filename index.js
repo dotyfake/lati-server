@@ -11,11 +11,15 @@ const {Server} = require('socket.io')
 const app = express();
 const port = process.env.PORT || 3000;
 const server = http.createServer(app)
+
 const io = require("socket.io")(8800, {
     cors: {
-      origin: "https://lati.netlify.app/",
+      origin: "*",
     },
   });
+  io.set('transports', ['websocket']);
+
+
 app.use(morgan('combined'));
 
 // app.use(express.static(path.join(__dirname, 'public')))
